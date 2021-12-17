@@ -38,6 +38,8 @@ cd auth-srv
 docker build -t notlazymisha/auth .
 docker push notlazymisha/auth #for prod, not needed for dev
 ```
+
+#### step 2
 - start deployment
 ```shell
 cd infrastructure
