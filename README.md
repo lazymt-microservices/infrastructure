@@ -3,6 +3,8 @@
 
 ### requires
 
+- install Docker Desktop for Windows / Mac
+
 - install [skaffold](https://skaffold.dev/docs/install/) manually
 - or via cmd
 ```shell
