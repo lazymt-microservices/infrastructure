@@ -32,11 +32,17 @@ kubectl delete secret jwt-secret
 ### deploy
 
 #### step 1
-- build docker image for auth service. Push not needed for dev.
+- build docker image for auth service
 ```shell
 cd auth-srv
 docker build -t notlazymisha/auth .
-docker push notlazymisha/auth #for prod, not needed for dev
+docker push notlazymisha/auth
+```
+- build docker image for the client
+```shell
+cd client
+docker build -t notlazymisha/client .
+docker push notlazymisha/client
 ```
 
 #### step 2
@@ -44,4 +50,12 @@ docker push notlazymisha/auth #for prod, not needed for dev
 ```shell
 cd infrastructure
 scaffold dev #./scaffold.exe dev
+```
+
+#### result
+- GET request to the `/api/users/currentuser` returns
+```json
+{
+    "currentUser": null
+}
 ```
