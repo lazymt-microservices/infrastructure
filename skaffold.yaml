@@ -24,3 +24,11 @@ build:
         manual:
           - src: '**/*.js'
             dest: .
+    - image: notlazymisha/tickets
+      context: ../tickets-srv
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
