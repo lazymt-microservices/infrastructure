@@ -54,6 +54,13 @@ docker build -t YOURDOCKERID/client .
 docker push YOURDOCKERID/client
 ```
 
+- build docker image for the tickets
+```shell
+cd tickets-srv
+docker build -t YOURDOCKERID/tickets .
+docker push YOURDOCKERID/tickets
+```
+
 #### step 2
 - start deployment
 ```shell
