@@ -15,10 +15,19 @@ choco install -y skaffold
 
 - install ingress controller. [Help](https://kubernetes.github.io/ingress-nginx/deploy/#quick-start).
 ```shell
-helm upgrade --install ingress-nginx ingress-nginx \
-  --repo https://kubernetes.github.io/ingress-nginx \
-  --namespace ingress-nginx --create-namespace
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.2.0/deploy/static/provider/cloud/deploy.yaml
 ```
+
+- check and  wait some number of minutes after running the command before the load balancer will no longer show a pending state
+```shell
+kubectl get svc -n ingress-nginx
+```
+- should be like this:
+
+![img.png](img.png)
+
+- if state is <pending>
+- check this [resolve](https://globallogic.udemy.com/course/microservices-with-node-js-and-react/learn/lecture/19493770#questions/16986940)
 
 - create a secret
 ```shell
@@ -28,8 +37,8 @@ kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf
 ```shell
 kubectl delete secret jwt-secret
 ```
-- set NODE_ENV
 
+- set NODE_ENV
 macOS / OS X or Linux:
 ```shell
 export NODE_ENV=dev
@@ -59,6 +68,13 @@ docker push YOURDOCKERID/client
 cd tickets-srv
 docker build -t YOURDOCKERID/tickets .
 docker push YOURDOCKERID/tickets
+```
+
+- build docker image for the orders
+```shell
+cd orders-srv
+docker build -t YOURDOCKERID/orders .
+docker push YOURDOCKERID/orders
 ```
 
 #### step 2
