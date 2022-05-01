@@ -95,3 +95,7 @@ You should then be able to access the app in your browser at `kubernetes.docker.
     "currentUser": null
 }
 ```
+
+#### how to rich out db inside the service
+- kubectl get pods
+- kubectl exec -it <podname> mongo
