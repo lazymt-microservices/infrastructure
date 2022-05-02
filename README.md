@@ -50,31 +50,38 @@ SET NODE_ENV=dev
 ### deploy
 
 #### step 1
-- build docker image for auth service
+- build docker image for `auth` service
 ```shell
 cd auth-srv
 docker build -t YOURDOCKERID/auth .
 docker push YOURDOCKERID/auth
 ```
-- build docker image for the client
+- build docker image for the `client`
 ```shell
 cd client
 docker build -t YOURDOCKERID/client .
 docker push YOURDOCKERID/client
 ```
 
-- build docker image for the tickets
+- build docker image for the `tickets` service
 ```shell
 cd tickets-srv
 docker build -t YOURDOCKERID/tickets .
 docker push YOURDOCKERID/tickets
 ```
 
-- build docker image for the orders
+- build docker image for the `orders` service
 ```shell
 cd orders-srv
 docker build -t YOURDOCKERID/orders .
 docker push YOURDOCKERID/orders
+```
+
+- build docker image for the `expiration` service
+```shell
+cd expiration-srv
+docker build -t YOURDOCKERID/expiration .
+docker push YOURDOCKERID/expiration
 ```
 
 #### step 2
@@ -95,7 +102,9 @@ You should then be able to access the app in your browser at `kubernetes.docker.
     "currentUser": null
 }
 ```
-
-#### how to rich out db inside the service
+#### how to get all pods
 - kubectl get pods
+#### how to rich out db inside the service
 - kubectl exec -it <podname> mongo
+#### how to delete pod (sometimes needed to fix issues)
+- kubectl delete <podname>
