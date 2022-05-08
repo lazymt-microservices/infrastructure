@@ -27,15 +27,33 @@ kubectl get svc -n ingress-nginx
 ![img.png](img.png)
 
 - if state is <pending>
-- check this [resolve](https://globallogic.udemy.com/course/microservices-with-node-js-and-react/learn/lecture/19493770#questions/16986940)
+- check for updates
+![img_1.png](img_1.png)
+- reset kubernetes
+- ![img_2.png](img_2.png)
+- install ingress controller, see the previous step
 
-- create a secret
+- create a jwt-secret
 ```shell
 kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf
 ```
-- to delete secret if needed
+- to delete jwt-secret if needed
 ```shell
 kubectl delete secret jwt-secret
+```
+
+- create a stripe-secret
+```shell
+kubectl create secret generic stripe-secret --from-literal STRIPE_KEY=<your secret stripe key>
+```
+- to delete stripe-secret if needed
+```shell
+kubectl delete secret stripe-secret
+```
+
+- check secrets
+```shell
+kubectl get secrets
 ```
 
 - set NODE_ENV
@@ -82,6 +100,13 @@ docker push YOURDOCKERID/orders
 cd expiration-srv
 docker build -t YOURDOCKERID/expiration .
 docker push YOURDOCKERID/expiration
+```
+
+- build docker image for the `payments` service
+```shell
+cd payments-srv
+docker build -t YOURDOCKERID/payments .
+docker push YOURDOCKERID/payments
 ```
 
 #### step 2
