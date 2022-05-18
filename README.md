@@ -133,3 +133,42 @@ You should then be able to access the app in your browser at `kubernetes.docker.
 - kubectl exec -it <podname> mongo
 #### how to delete pod (sometimes needed to fix issues)
 - kubectl delete <podname>
+
+#### Digital Ocean
+- use Digital Ocean docs to install `doctl` on local machine
+- generate API
+- run on local machine
+```shell
+doctl auth init
+```
+- get connection info for our new cluster
+```shell
+doctl kubernetes cluster kubeconfig save <cluster_name>
+```
+- e.g.
+```shell
+doctl kubernetes cluster kubeconfig save ticketing-microservices
+```
+- check nodes
+```shell
+kubectl get nodes
+```
+- check context
+```shell
+kubectl config view
+```
+- find `context.name`
+- use context
+```shell
+kubectl config use-context <context_name>
+```
+-e.g. 
+```shell
+kubectl config use-context do-sfo3-ticketing-microservices
+```
+- use context on local machine if needed
+```shell
+kubectl config use-context docker-desktop
+```
+- or to switch between context use Docker Desktop UI
+- ![img_3.png](img_3.png)
