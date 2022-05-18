@@ -172,3 +172,5 @@ kubectl config use-context docker-desktop
 ```
 - or to switch between context use Docker Desktop UI
 - ![img_3.png](img_3.png)
+- create secrets
+- set ingress-nginx config [Help](https://kubernetes.github.io/ingress-nginx/deploy/#digital-ocean).
